@@ -6,3 +6,6 @@ td{
 .colorer{
     background-color: green;
 }
+.display-none{
+    display: none;
+}

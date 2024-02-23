@@ -12,9 +12,11 @@ start.addEventListener("click", function () {
         for (let i_colone = 0; i_colone < colone; i_colone++) {
             const column = document.createElement("td")
             column.setAttribute("id","l"+i_ligne + "c"+ i_colone)
+            await(100)
             line.appendChild(column)
 
         }
+        await(100)
         table.appendChild(line)
     }
     body.appendChild(table)

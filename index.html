@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeu du marteau</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./script.js" defer></script>
+    <link rel="shortcut icon" href="data:image/png;base64,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" type="image/x-icon">
+</head>
+
+<body>
+    <h1>Jeu du marteau</h1>
+    <p>
+        Ce jeu se déroule sur un tableau de 5 lignes et autant de colonnes. Le but est de cliquer sur les cases de
+        couleur le plus vite possible car elles apparaissent de plus en plus vite ! Au bout de 20 points, tu remportes
+        une phrase supplémentaire sur le calendrier ! Par contre, tu ne peux gagner que 5 jours.
+
+    </p>
+<button id="start">Démarer le niveau 1</button>
+</body>
+
+</html>

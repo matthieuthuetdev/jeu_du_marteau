@@ -1,7 +1,8 @@
 td{
-    border: solid black 1px;
-    height: 1.5rem;
-    width: 1.5rem;
+    border: solid black 8px;
+    height: 8rem;
+    width: 8rem;
+    border-radius: 100rem;
 }
 .colorer{
     background-color: green;

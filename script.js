@@ -25,12 +25,13 @@ start.addEventListener("click", function () {
         const td = document.querySelectorAll("td");
         const l = mt_rand(0, ligne - 1);
         const c = mt_rand(0, colonne - 1);
+        const scor = 0
         const verte = document.querySelector("#l" + l + "c" + c);
-        verte.classList.toggle("colorer");
+        verte.classList.add("colorer");
         console.error(document.querySelectorAll(".colorer").length);
         case_verte++;
     }, 1000);
-    
+
     document.querySelectorAll("td").forEach(td => {
         td.addEventListener("click", () => {
             let id = td.id;
@@ -43,13 +44,13 @@ start.addEventListener("click", function () {
             }
         });
     });
-const h1 = document.querySelector("h1").innerText = "Score : " +scor+ "/25"
     setInterval(() => {
         if (case_verte >= 5) {
             window.location.href = "./lose.html";
         } else if (scor >= 25) {
             window.location.href = "./win.html";
         }
+        const h1 = document.querySelector("h1").innerText = "Score : " + scor + "/25"
 
     }, 100);
 });

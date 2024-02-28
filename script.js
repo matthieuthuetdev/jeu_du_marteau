@@ -1,34 +1,55 @@
 function mt_rand(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
-  }
-const ligne = 5
-const colone = 5
-const start = document.querySelector("#start")
-@@ -8,17 +11,22 @@ start.addEventListener("click", function () {
-        const line = document.createElement("tr")
-        for (let i_colone = 0; i_colone < colone; i_colone++) {
-            const column = document.createElement("td")
-            column.setAttribute("id", i_ligne + "," + i_colone)
-            column.setAttribute("id","l"+i_ligne + "c"+ i_colone)
-            line.appendChild(column)
+}
 
+const ligne = 5;
+const colonne = 5;
+const start = document.querySelector("#start");
+
+start.addEventListener("click", function () {
+    const table = document.createElement("table");
+    for (let i_ligne = 0; i_ligne < ligne; i_ligne++) {
+        const line = document.createElement("tr");
+        for (let i_colonne = 0; i_colonne < colonne; i_colonne++) {
+            const column = document.createElement("td");
+            column.setAttribute("id", "l" + i_ligne + "c" + i_colonne);
+            line.appendChild(column);
         }
-        table.appendChild(line)
+        table.appendChild(line);
     }
-    body.appendChild(table)
-    start.classList.add("display-none")
-setInterval(1,function() {
-
-})
-    const td = document.querySelectorAll("td")
+    document.body.appendChild(table);
+    start.classList.add("display-none");
+    let case_verte = 0;
+    let scor = 0;
     setInterval(function () {
-        const l = mt_rand(0,colone -1)
-        const c = mt_rand(0,ligne -1)
-        const verte = document.querySelector("#l"+l+"c"+ c)
-        verte.classList.toggle("colorer")
-        console.error(document.querySelectorAll(".colorer").length)
-    }, 1000)
+        const td = document.querySelectorAll("td");
+        const l = mt_rand(0, ligne - 1);
+        const c = mt_rand(0, colonne - 1);
+        const verte = document.querySelector("#l" + l + "c" + c);
+        verte.classList.toggle("colorer");
+        console.error(document.querySelectorAll(".colorer").length);
+        case_verte++;
+    }, 1000);
+    
+    document.querySelectorAll("td").forEach(td => {
+        td.addEventListener("click", () => {
+            let id = td.id;
+            if (document.querySelector("#" + id).classList.contains("colorer")) {
+                document.querySelector("#" + id).classList.remove("colorer")
+                scor++;
+                case_verte--;
+            } else {
+                scor--;
+            }
+        });
+    });
+const h1 = document.querySelector("h1").innerText = "Score : " +scor+ "/25"
+    setInterval(() => {
+        if (case_verte >= 5) {
+            window.location.href = "./lose.html";
+        } else if (scor >= 25) {
+            window.location.href = "./win.html";
+        }
 
-
-
-})
+    }, 100);
+});

@@ -1,5 +1,5 @@
 function mt_rand(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+    return Math.floor(Mathandom() * (max - min + 1)) + min;
 }
 
 const ligne = 5;
@@ -25,11 +25,15 @@ start.addEventListener("click", function () {
         const td = document.querySelectorAll("td");
         const l = mt_rand(0, ligne - 1);
         const c = mt_rand(0, colonne - 1);
-        const scor = 0
         const verte = document.querySelector("#l" + l + "c" + c);
-        verte.classList.add("colorer");
-        console.error(document.querySelectorAll(".colorer").length);
-        case_verte++;
+        
+        // Probabilité de 1 chance sur 3 pour que la case soit rouge
+        if (Math.random() < 1/3) {
+            verte.classList.add("rouge");
+        } else {
+            verte.classList.add("colorer");
+            case_verte++;
+        }
     }, 1000);
 
     document.querySelectorAll("td").forEach(td => {
@@ -39,6 +43,9 @@ start.addEventListener("click", function () {
                 document.querySelector("#" + id).classList.remove("colorer")
                 scor++;
                 case_verte--;
+            } else if (document.querySelector("#" + id).classList.contains("rouge")) {
+                document.querySelector("#" + id).classList.remove("rouge");
+                scor -= 5; // Retirer 5 points
             } else {
                 scor--;
             }
